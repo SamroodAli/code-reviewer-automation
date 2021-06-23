@@ -26,10 +26,10 @@ const Form = ({
         type="text"
         value={require}
         onChange={(e) => setRequire(e.target.value)}
-        placeholder="Enter optional change"
+        placeholder="Enter Required Change"
       />
       <br />
-      <button onClick={() => onSubmitOption(option)}>
+      <button onClick={() => onSubmitRequire(require)}>
         New optional change
       </button>
       <br />
@@ -40,7 +40,7 @@ const Form = ({
         placeholder="Enter optional change"
       />
       <br />
-      <button onClick={() => onSubmitRequire(require)}>
+      <button onClick={() => onSubmitOption(option)}>
         New optional change
       </button>
     </>
