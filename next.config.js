@@ -1,3 +1,3 @@
-module.exports = {
-  reactStrictMode: true,
-}
+const withMDX = require("@zeit/next-mdx")()
+
+module.exports = withMDX
