@@ -38,6 +38,7 @@ const Index = function Index() {
 
   const newChange = (change) => {
     let newString = `\n- [ ] ${change}`;
+    setChange("");
     setChanges(changes.concat(newString));
   };
 
