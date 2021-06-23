@@ -53,15 +53,14 @@ const Index = function Index() {
   const [options, setOptions] = useState([]);
   const [require, setRequire] = useState("");
   const [requires, setRequires] = useState([]);
-  const [input, setInput] = useState(data.slice());
 
-  // const input = () => {
-  //   let newString = data.slice();
-  //   newString = newString.replace("{name}", name);
-  //   newString = newString.replace("{options}", options);
-  //   newString = newString.replace("{requires}", requires);
-  //   return newString;
-  // };
+  const input = () => {
+    let newString = data.slice();
+    newString = newString.replace("{name}", name);
+    newString = newString.replace("{options}", options);
+    newString = newString.replace("{requires}", requires);
+    return newString;
+  };
 
   const newOption = (change) => {
     let newString = `\n- [ ] ${change}`;
@@ -93,10 +92,10 @@ const Index = function Index() {
       <div style={{ display: "flex" }}>
         <textarea
           style={{ height: "80vh", width: "50%", margin: "1rem 0" }}
-          value={input}
+          value={input()}
         />
         <div style={{ margin: "1rem" }}>
-          <ReactMarkdown remarkPlugins={[gfm]}>{input}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[gfm]}>{input()}</ReactMarkdown>
         </div>
       </div>
     </div>
