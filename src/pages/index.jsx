@@ -78,10 +78,10 @@ const Index = function Index() {
   };
 
   const preview = () => {
-    return `${name} \n
-    ${header}
+    return `${name}
+    \n${header}
     ${middle()}
-    ${footer}
+    \n${footer}
     `;
   };
 
