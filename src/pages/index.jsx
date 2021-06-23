@@ -53,10 +53,10 @@ const Index = function Index() {
   const [options, setOptions] = useState([]);
   const [require, setRequire] = useState("");
   const [requires, setRequires] = useState([]);
+  const [header, setHeader] = useState(data.header.slice());
 
   const input = () => {
     let newString = data.header.slice();
-    newString = newString.replace("{name}", name);
     return newString;
   };
 
@@ -84,6 +84,13 @@ const Index = function Index() {
     setRequires(requires.concat(newString));
   };
 
+  const preview = () => {
+    return `Hey ${name}
+    ${header}
+    ${middle()}
+    `;
+  };
+
   return (
     <div style={{ padding: "1rem" }}>
       <h1 style={{ textAlign: "center", textDecoration: "underline" }}>
@@ -99,7 +106,7 @@ const Index = function Index() {
         onSubmitOption={newOption}
         onSubmitRequire={newRequire}
       />
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
         <div>
           <textarea
             style={{ height: "30vh", width: "100%", margin: "1rem 0" }}
@@ -116,8 +123,15 @@ const Index = function Index() {
         </div>
 
         <div style={{ margin: "1rem" }}>
-          <ReactMarkdown remarkPlugins={[gfm]}>{input()}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[gfm]}>{preview()}</ReactMarkdown>
         </div>
+      </div>
+      <div>
+        <h2>Final markdown, copy paste this</h2>
+        <textarea
+          style={{ width: "100%", height: "100vh" }}
+          value={preview()}
+        ></textarea>
       </div>
     </div>
   );
