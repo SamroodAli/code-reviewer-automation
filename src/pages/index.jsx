@@ -55,10 +55,20 @@ const Index = function Index() {
   const [requires, setRequires] = useState([]);
 
   const input = () => {
-    let newString = data.slice();
+    let newString = data.header.slice();
     newString = newString.replace("{name}", name);
-    newString = newString.replace("{options}", options);
+    return newString;
+  };
+
+  const middle = () => {
+    let newString = data.changes.slice();
     newString = newString.replace("{requires}", requires);
+    newString = newString.replace("{options}", options);
+    return newString;
+  };
+
+  const footer = () => {
+    let newString = data.footer.slice();
     return newString;
   };
 
@@ -90,10 +100,21 @@ const Index = function Index() {
         onSubmitRequire={newRequire}
       />
       <div style={{ display: "flex" }}>
-        <textarea
-          style={{ height: "80vh", width: "50%", margin: "1rem 0" }}
-          value={input()}
-        />
+        <div>
+          <textarea
+            style={{ height: "30vh", width: "100%", margin: "1rem 0" }}
+            value={input()}
+          />
+          <textarea
+            style={{ height: "30vh", width: "100%", margin: "1rem 0" }}
+            value={middle()}
+          />
+          <textarea
+            style={{ height: "30vh", width: "100%", margin: "1rem 0" }}
+            value={footer()}
+          />
+        </div>
+
         <div style={{ margin: "1rem" }}>
           <ReactMarkdown remarkPlugins={[gfm]}>{input()}</ReactMarkdown>
         </div>
