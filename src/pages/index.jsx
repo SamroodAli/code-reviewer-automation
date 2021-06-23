@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
-import data from "./Changes";
+import data from "../../Changes";
 const gfm = require("remark-gfm");
 import TextArea from "../components/Textarea";
 
