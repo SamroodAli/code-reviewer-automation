@@ -12,10 +12,7 @@ _Check the comments under the review._
 _Every comment with the [OPTIONAL] prefix is not crucial enough to stop the approval of this PR. However, I strongly recommend you to take them into account as they can make your code better._
 
 You can also consider:
-- x
-- y
-- z
-
+{options}
 Cheers and Happy coding!👏👏👏
 
 Feel free to leave any questions or comments in the PR thread if something is not 100% clear.
