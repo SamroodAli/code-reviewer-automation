@@ -38,9 +38,10 @@ const Form = ({
         value={option}
         onChange={(e) => setOption(e.target.value)}
         placeholder="Enter optional change"
+        tabIndex={-1}
       />
       <br />
-      <button onClick={() => onSubmitOption(option)}>
+      <button onClick={() => onSubmitOption(option)} tabIndex={-1}>
         New optional change
       </button>
     </>
@@ -54,16 +55,12 @@ const Index = function Index() {
   const [require, setRequire] = useState("");
   const [requires, setRequires] = useState([]);
   const [header, setHeader] = useState(data.header.slice());
+  const [footer, setFooter] = useState(data.footer.slice());
 
   const middle = () => {
     let newString = data.changes.slice();
     newString = newString.replace("{requires}", requires);
     newString = newString.replace("{options}", options);
-    return newString;
-  };
-
-  const footer = () => {
-    let newString = data.footer.slice();
     return newString;
   };
 
@@ -83,6 +80,7 @@ const Index = function Index() {
     return `Hey ${name}
     ${header}
     ${middle()}
+    ${footer}
     `;
   };
 
@@ -102,19 +100,35 @@ const Index = function Index() {
         onSubmitRequire={newRequire}
       />
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-        <div>
+        <div style={{ border: "1px solid indianred", padding: "0.25rem" }}>
           <textarea
-            style={{ height: "30vh", width: "100%", margin: "1rem 0" }}
+            style={{
+              height: "25vh",
+              width: "100%",
+              margin: " 0",
+              border: "none",
+            }}
             value={header}
             onChange={(e) => setHeader(e.target.value)}
           />
           <textarea
-            style={{ height: "30vh", width: "100%", margin: "1rem 0" }}
+            style={{
+              height: "25vh",
+              width: "100%",
+              margin: " 0",
+              border: "none",
+            }}
             value={middle()}
           />
           <textarea
-            style={{ height: "30vh", width: "100%", margin: "1rem 0" }}
-            value={footer()}
+            style={{
+              height: "25vh",
+              width: "100%",
+              margin: " 0",
+              border: "none",
+            }}
+            value={footer}
+            onChange={(e) => setFooter(e.target.value)}
           />
         </div>
 

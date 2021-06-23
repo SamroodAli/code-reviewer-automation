@@ -2,6 +2,7 @@ const review = {
   header: `
 Good job so far!
 There are some issues that you still need to work on to go to the next project but you are almost there!
+
 <FEEL FREE TO CHANGE THIS MESSAGE TO YOUR PERSONAL WORDS>
 `,
   changes: `
