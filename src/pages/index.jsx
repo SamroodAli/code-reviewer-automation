@@ -66,7 +66,7 @@ const Index = function Index() {
   };
 
   const newOption = (change) => {
-    let newString = `\n- [ ] ${change}`;
+    let newString = `\n- [ ] [OPTIONAL] ${change}`;
     setOption("");
     setOptions(options.concat(newString));
   };
