@@ -8,7 +8,7 @@ const TextArea = ({ handleChange = () => {}, value, placeholder = "" }) => {
     <>
       <Textarea
         className="textarea"
-        style={{ width: "100%", minHeight: "10vh" }}
+        style={{ width: "100%", minHeight: "10vh", border: "none" }}
         value={value}
         onChange={handleChange}
         ref={textareaRef}

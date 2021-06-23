@@ -78,7 +78,7 @@ const Index = function Index() {
   };
 
   const preview = () => {
-    return `${name}
+    return `${name} \n
     ${header}
     ${middle()}
     ${footer}
