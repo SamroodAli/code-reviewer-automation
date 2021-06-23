@@ -3,7 +3,16 @@ import ReactMarkdown from "react-markdown";
 import data from "./Changes";
 const gfm = require("remark-gfm");
 
-const Form = ({ name, setName, change, setChange, onSubmit }) => {
+const Form = ({
+  name,
+  setName,
+  option,
+  setOption,
+  require,
+  setRequire,
+  onSubmitOption,
+  onSubmitRequire,
+}) => {
   return (
     <>
       <input
@@ -15,31 +24,54 @@ const Form = ({ name, setName, change, setChange, onSubmit }) => {
       <br />
       <input
         type="text"
-        value={change}
-        onChange={(e) => setChange(e.target.value)}
+        value={require}
+        onChange={(e) => setRequire(e.target.value)}
         placeholder="Enter optional change"
       />
       <br />
-      <button onClick={() => onSubmit(change)}>New optional change</button>
+      <button onClick={() => onSubmitOption(option)}>
+        New optional change
+      </button>
+      <br />
+      <input
+        type="text"
+        value={option}
+        onChange={(e) => setOption(e.target.value)}
+        placeholder="Enter optional change"
+      />
+      <br />
+      <button onClick={() => onSubmitRequire(require)}>
+        New optional change
+      </button>
     </>
   );
 };
 
 const Index = function Index() {
   const [name, setName] = useState("");
-  const [change, setChange] = useState("");
-  const [changes, setChanges] = useState([]);
+  const [option, setOption] = useState("");
+  const [options, setOptions] = useState([]);
+  const [require, setRequire] = useState("");
+  const [requires, setRequires] = useState([]);
+
   const input = () => {
     let newString = data.slice();
     newString = newString.replace("{name}", name);
-    newString = newString.replace("{options}", changes);
+    newString = newString.replace("{options}", options);
+    newString = newString.replace("{requires}", requires);
     return newString;
   };
 
-  const newChange = (change) => {
+  const newOption = (change) => {
     let newString = `\n- [ ] ${change}`;
-    setChange("");
-    setChanges(changes.concat(newString));
+    setOption("");
+    setOptions(options.concat(newString));
+  };
+
+  const newRequire = (change) => {
+    let newString = `\n- [ ] ${change}`;
+    setRequire("");
+    setRequires(requires.concat(newString));
   };
 
   return (
@@ -50,9 +82,12 @@ const Index = function Index() {
       <Form
         name={name}
         setName={setName}
-        change={change}
-        setChange={setChange}
-        onSubmit={newChange}
+        option={option}
+        setOption={setOption}
+        require={require}
+        setRequire={setRequire}
+        onSubmitOption={newOption}
+        onSubmitRequire={newRequire}
       />
       <div style={{ display: "flex" }}>
         <textarea
@@ -60,9 +95,9 @@ const Index = function Index() {
           value={input()}
           readOnly={true}
         />
-        <p style={{ margin: "1rem" }}>
+        <div style={{ margin: "1rem" }}>
           <ReactMarkdown remarkPlugins={[gfm]}>{input()}</ReactMarkdown>
-        </p>
+        </div>
       </div>
     </div>
   );

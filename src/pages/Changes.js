@@ -6,7 +6,7 @@ There are some issues that you still need to work on to go to the next project b
 <FEEL FREE TO CHANGE THIS MESSAGE TO YOUR PERSONAL WORDS>
 
 ## Required Changes ♻️
-{required}
+{requires}
 _Check the comments under the review._
 
 ## Optional suggestions
