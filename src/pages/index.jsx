@@ -2,6 +2,7 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import data from "./Changes";
 const gfm = require("remark-gfm");
+import TextArea from "../components/Textarea";
 
 const Form = ({
   name,
@@ -49,7 +50,7 @@ const Form = ({
 };
 
 const Index = function Index() {
-  const [name, setName] = useState("");
+  const [name, setName] = useState("Hey ");
   const [option, setOption] = useState("");
   const [options, setOptions] = useState([]);
   const [require, setRequire] = useState("");
@@ -77,7 +78,7 @@ const Index = function Index() {
   };
 
   const preview = () => {
-    return `Hey ${name}
+    return `${name}
     ${header}
     ${middle()}
     ${footer}
@@ -85,7 +86,7 @@ const Index = function Index() {
   };
 
   return (
-    <div style={{ padding: "1rem" }}>
+    <div>
       <h1 style={{ textAlign: "center", textDecoration: "underline" }}>
         Dynamic template generator
       </h1>
@@ -100,35 +101,17 @@ const Index = function Index() {
         onSubmitRequire={newRequire}
       />
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-        <div style={{ border: "1px solid indianred", padding: "0.25rem" }}>
-          <textarea
-            style={{
-              height: "25vh",
-              width: "100%",
-              margin: " 0",
-              border: "none",
-            }}
+        <div>
+          <TextArea
             value={header}
-            onChange={(e) => setHeader(e.target.value)}
+            handleChange={(e) => setHeader(e.target.value)}
+            placeholder="Code review Header"
           />
-          <textarea
-            style={{
-              height: "25vh",
-              width: "100%",
-              margin: " 0",
-              border: "none",
-            }}
-            value={middle()}
-          />
-          <textarea
-            style={{
-              height: "25vh",
-              width: "100%",
-              margin: " 0",
-              border: "none",
-            }}
+          <TextArea value={middle()} />
+          <TextArea
             value={footer}
-            onChange={(e) => setFooter(e.target.value)}
+            handleChange={(e) => setFooter(e.target.value)}
+            placeholder="Enter code review footer"
           />
         </div>
 
@@ -138,10 +121,7 @@ const Index = function Index() {
       </div>
       <div>
         <h2>Final markdown, copy paste this</h2>
-        <textarea
-          style={{ width: "100%", height: "100vh" }}
-          value={preview()}
-        ></textarea>
+        <TextArea value={preview()} />
       </div>
     </div>
   );
