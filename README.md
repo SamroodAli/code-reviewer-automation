@@ -1,6 +1,6 @@
-# Code reviwer automation tool
-One place for all your code review needs. This is to help code reviewers generate templates for their reviews.
-This is in early beta version right now and at the moment supports only a single feature: Markdown template generation for reviews.
+# Code reviewer automation tool
+One place for all your code review needs
+This is in `early beta` version right now and at the moment supports only a single feature: `Markdown template generation for reviews.`
 Contributions are welcome and much appreciated.
 
 ## Getting Started
