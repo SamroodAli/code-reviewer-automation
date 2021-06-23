@@ -55,11 +55,6 @@ const Index = function Index() {
   const [requires, setRequires] = useState([]);
   const [header, setHeader] = useState(data.header.slice());
 
-  const input = () => {
-    let newString = data.header.slice();
-    return newString;
-  };
-
   const middle = () => {
     let newString = data.changes.slice();
     newString = newString.replace("{requires}", requires);
@@ -110,7 +105,8 @@ const Index = function Index() {
         <div>
           <textarea
             style={{ height: "30vh", width: "100%", margin: "1rem 0" }}
-            value={input()}
+            value={header}
+            onChange={(e) => setHeader(e.target.value)}
           />
           <textarea
             style={{ height: "30vh", width: "100%", margin: "1rem 0" }}
